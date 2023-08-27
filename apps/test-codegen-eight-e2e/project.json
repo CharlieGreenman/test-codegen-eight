@@ -1,0 +1,29 @@
+{
+  "name": "test-codegen-eight-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/test-codegen-eight-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/test-codegen-eight-e2e/cypress.json",
+        "devServerTarget": "test-codegen-eight:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "test-codegen-eight:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/test-codegen-eight-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["test-codegen-eight"]
+}
